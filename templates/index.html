@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% set active_page = "home" %}
+
+{% block content %}
+<h1 class="title">
+  Gather Lawyers
+</h1>
+<hr>
+
+<div class="row">
+    <div class="col">
+    <div class="card">
+        <div class="card-header">
+            Search For Lawyers
+        </div>
+        <div class="card-body">
+            <div class="row">
+
+                <div class="col">
+                    <form method="POST" action="{{ url_for('lawyer_list') }}">
+                        <div class="row">
+                            <div class="col">
+                                <div class="input-group">
+                                    <div class="input-group-text">Search URL:</div>
+                                    <input name="url">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-4">
+                                <button type="submit" class="btn btn-primary">Search For Lawyers</button>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    </div>
+</div>
+<hr>
+
+{% endblock %}

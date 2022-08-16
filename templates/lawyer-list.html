@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% set active_page = "lawyers" %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col">
+        <div class="row">
+            <div class="col">
+                <h3>Lawyers</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Name</th>
+                      <th scope="col">firm</th>
+                      <th scope="col">Click to Copy</th>
+<!--                      <th scope="col">Picture</th>-->
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for lawyer in lawyers %}
+                      <tr>
+                        <th scope="row">{{ loop.index }}</th>
+                        <td><a href="{{ lawyer['link'] }}">{{ lawyer["name"] }}</a></td>
+                        <td>{{ lawyer["firm"] }}</td>
+                        <td>
+
+                            <input type="text" value="{{ lawyer['name'] }}" id="{{ loop.index }}">
+                            <button onclick="myFunction({{ loop.index }})">Copy name</button>
+
+                        </td>
+<!--                        <td><img src="{{ lawyer['picture'] }}"></td>-->
+                      </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<hr>
+
+<script>
+    function myFunction(index) {
+      var copyText = document.getElementById(index);
+
+      copyText.select();
+      copyText.setSelectionRange(0, 99999); /* For mobile devices */
+
+      navigator.clipboard.writeText(copyText.value);
+<!--  alert("Copied the text: " + copyText.value);-->
+    }
+</script>
+
+{% endblock %}
+
